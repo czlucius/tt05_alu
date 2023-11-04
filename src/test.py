@@ -28,8 +28,8 @@ async def test_alu(dut):
 
     # subtract may be a little finicky
     dut.uio_in.value = 1
-    dut.log_info("subtract out")
-    dut.log_info(dut.uo_out.value)
+    dut._log_info("subtract out")
+    dut._log_info(dut.uo_out.value)
     await Timer(20, units="ns")
     assert dut.uo_out.value == 0b11111110
 
