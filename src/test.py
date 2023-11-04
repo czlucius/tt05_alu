@@ -23,51 +23,65 @@ async def test_alu(dut):
     dut.ui_in.value = 0b10111001
 
     dut.uio_in.value = 0
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 22
 
     # subtract may be a little finicky
     dut.uio_in.value = 1
     dut.log_info("subtract out")
     dut.log_info(dut.uo_out.value)
+    await Timer(20, units="ns")
+
     assert dut.uo_out.value == 0b11111100
 
     dut.uio_in.value = 2
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 117
 
     dut.uio_in.value = 3
     dut.ui_in.value = 0b10011011
     dut.log_info("divide out")
     dut.log_info(dut.uo_out.value)
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 1
 
     dut.uio_in.value = 4
     dut.ui_in.value = 0b10011011
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 0b1001
 
     dut.uio_in.value = 5
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 0b1101
 
 
     dut.uio_in.value = 6
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 0b0100
 
     dut.uio_in.value = 7
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 0b0110
 
     dut.uio_in.value = 8
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 0b0010
 
     dut.uio_in.value = 9
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 0b01000110
 
     dut.uio_in.value = 10
+    await Timer(20, units="ns")
     assert dut.uo_out.value == 4
 
     dut.ui_in.value = 11
+    await Timer(20, units="ns")
     dut.ui_in.value = 0b1100_0110
     assert dut.uo_out.value == 48
 
     dut.ui_in.value = 12
+    await Timer(20, units="ns")
     dut.ui_in.value = 0b1000_0110
     assert dut.uo_out.value == 3
 

@@ -9,7 +9,7 @@ module tt_um_czlucius_alu (
     input  wire       rst_n     // reset_n - low to reset
 );
     wire[3:0] x, y; // declaration of variables
-    wire [7:0] calculation;
+    reg [7:0] calculation;
 
     assign x = ui_in[3:0];
     assign y = ui_in[7:4];
@@ -22,25 +22,22 @@ module tt_um_czlucius_alu (
 
 
     always @(*) begin
-        if (!rst_n) begin
-            calculation = 0;
-        end else begin
-            case (uio_in)
-                8'd0: calculation = x + y;
-                8'd1: calculation = $signed(x) - $signed(y); // x and y are both unsigned. -15 <= calculation <= 15. (technically -16 can also be represented, but theres no way to achieve -16.)
-                8'd2: calculation = x * y;
-                8'd3: calculation = x / y;
-                8'd4: calculation = {x[3]&y[3], x[2]&y[2], x[1]&y[1], x[0]&y[0]};
-                8'd5: calculation = {x[3]|y[3], x[2]|y[2], x[1]|y[1], x[0]|y[0]};
-                8'd6: calculation = {x[3]^y[3], x[2]^y[2], x[1]^y[1], x[0]^y[0]};
-                8'd7: calculation = {~(x[3]&y[3]), ~(x[2]&y[2]), ~(x[1]&y[1]), ~(x[0]&y[0])};
-                8'd8: calculation = {~(x[3]|y[3]), ~(x[2]|y[2]), ~(x[1]|y[1]), ~(x[0]|y[0])};
-                8'd9: calculation = ~ui_in;
-                8'd10: calculation = x % y;
-                8'd11: calculation = x << y;
-                8'd12: calculation = x >> y;
-                default: calculation = 8'h0;
-            endcase
-        end
+        case (uio_in)
+            8'd0: calculation = x + y;
+            8'd1: calculation = $signed(x) - $signed(y); // x and y are both unsigned. -15 <= calculation <= 15. (technically -16 can also be represented, but theres no way to achieve -16.)
+            8'd2: calculation = x * y;
+            8'd3: calculation = x / y;
+            8'd4: calculation = {x[3]&y[3], x[2]&y[2], x[1]&y[1], x[0]&y[0]};
+            8'd5: calculation = {x[3]|y[3], x[2]|y[2], x[1]|y[1], x[0]|y[0]};
+            8'd6: calculation = {x[3]^y[3], x[2]^y[2], x[1]^y[1], x[0]^y[0]};
+            8'd7: calculation = {~(x[3]&y[3]), ~(x[2]&y[2]), ~(x[1]&y[1]), ~(x[0]&y[0])};
+            8'd8: calculation = {~(x[3]|y[3]), ~(x[2]|y[2]), ~(x[1]|y[1]), ~(x[0]|y[0])};
+            8'd9: calculation = ~ui_in;
+            8'd10: calculation = x % y;
+            8'd11: calculation = x << y;
+            8'd12: calculation = x >> y;
+            default: calculation = 8'h0;
+        endcase
+        
     end
 endmodule
