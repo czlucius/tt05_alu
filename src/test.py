@@ -73,7 +73,7 @@ async def test_alu(dut):
 
     dut.ui_in.value = 11
     
-    dut.ui_in.value = 0b0110_0001
+    dut.ui_in.value = 0b1000_0110
     await Timer(20, units="ns")
     assert dut.uo_out.value == 48 
 
