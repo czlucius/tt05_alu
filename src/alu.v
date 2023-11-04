@@ -9,7 +9,7 @@ module tt_um_czlucius_alu (
     input  wire       rst_n     // reset_n - low to reset
 );
     wire[3:0] x, y; // declaration of variables
-    reg [7:0] calculation;
+    wire [7:0] calculation;
 
     assign x = ui_in[3:0];
     assign y = ui_in[7:4];
