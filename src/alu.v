@@ -15,7 +15,7 @@ module tt_um_czlucius_alu (
     assign y = ui_in[7:4];
 
 
-    calculation = 8'h0;
+    assign calculation = 8'h0;
     assign uo_out = calculation;
 
     assign uio_out = 8'h0;
