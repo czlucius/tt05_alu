@@ -17,6 +17,7 @@ async def test_alu(dut):
     dut.uio_oe.value = 0x0
 
     dut._log.info("reset")
+    dut.rst_n.value = 0
     dut.rst_n.value = 1
 
     dut.ui_in.value = 0b10111001
