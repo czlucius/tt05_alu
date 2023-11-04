@@ -23,7 +23,7 @@ module tt_um_czlucius_alu (
 
     always @(*) begin
         if (!rst_n) begin
-            calculation <= 8h'0;
+            calculation = 8h'0;
         end else begin
             case (uio_in)
                 8'd0: calculation = x + y;
