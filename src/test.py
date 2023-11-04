@@ -11,11 +11,11 @@ async def test_7seg(dut):
                     #   yyyyxxxx
                     #   01230123
     dut.ui_in.value = 0b10111001
-    dut.uio_oe = 0
-    dut._log.info("reset")
-    dut.rst_n.value = 1
+
     dut.clk = 0
     dut.ena = 1
+    dut._log.info("reset")
+    dut.rst_n.value = 1
 
     dut.uio_in.value = 0
     assert dut.uo_out.value == 22
