@@ -12,8 +12,6 @@ async def test_7seg(dut):
                     #   01230123
     dut.ui_in.value = 0b10111001
 
-    dut.clk = 0
-    dut.ena = 1
     dut._log.info("reset")
     dut.rst_n.value = 1
 
