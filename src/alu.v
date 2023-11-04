@@ -36,7 +36,7 @@ module tt_um_czlucius_alu (
             8'd10: calculation = x % y;
             8'd11: calculation = x << y;
             8'd12: calculation = x >> y;
-            default: calculation = ui_in; // no-op
+            default: calculation = 8'h0;
         endcase
     end
 endmodule
