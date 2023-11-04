@@ -34,7 +34,7 @@ module tt_um_czlucius_alu (
             8'd8: calculation = {~(x[3]|y[3]), ~(x[2]|y[2]), ~(x[1]|y[1]), ~(x[0]|y[0])};
             8'd9: calculation = ~ui_in;
             8'd10: calculation = x % y;
-            8'd11: calculation = y;
+            8'd11: calculation = x << y;
             8'd12: calculation = x >> y;
             default: calculation = 8'h0;
         endcase
